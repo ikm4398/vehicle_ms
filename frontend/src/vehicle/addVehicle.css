@@ -1,0 +1,125 @@
+/* Container and overall layout */
+.add-vehicle-form-wrapper {
+  max-width: 900px;
+  margin: 32px auto;
+  padding: 24px 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 1.5px 8px rgb(0 0 0 / 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #2b2b2b;
+}
+
+.add-vehicle-form-wrapper h2 {
+  color: #234ef3;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+/* Form grid layout inspired by your image */
+.addvehicle-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px 24px;
+}
+
+/* Form group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.label-bold {
+  font-weight: 600;
+  color: #263359;
+  margin-bottom: 6px;
+}
+
+label {
+  font-weight: 500;
+  color: #4c5e88;
+  margin-bottom: 6px;
+}
+
+/* Inputs styling to match clean UI */
+.input-field {
+  padding: 8px 12px;
+  border: 1.5px solid #d5d7e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  color: #2b2b2b;
+  transition: border-color 0.2s ease;
+}
+
+.input-field:focus {
+  border-color: #234ef3;
+  outline: none;
+}
+
+/* Button styles */
+.form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.btn-submit {
+  background-color: #234ef3;
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #1825ad;
+}
+
+.toast-message {
+  position: fixed;
+  bottom: 24px;
+  right: 32px;
+  z-index: 2000;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: fadeInSlideUp 0.3s ease-out, fadeOut 0.5s ease-in 4.5s forwards;
+  max-width: 320px;
+}
+
+.toast-message.success {
+  background-color: #2e7d32; /* Green */
+}
+
+.toast-message.error {
+  background-color: #c62828; /* Red */
+}
+
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateY(20px);
+    visibility: hidden;
+  }
+}
