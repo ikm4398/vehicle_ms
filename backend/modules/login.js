@@ -1,9 +1,8 @@
 // modules/login.js
 const axios = require("axios");
 
-const BASE_URL = "http://pro.telemko.com/wialon/ajax.html";
-const TOKEN =
-  "21681804e33c8635d68a2c9b29581527440BBABCE32D4D9A9105C6F24BA75F2A3191037F";
+const BASE_URL = process.env.W_URL;
+const TOKEN = process.env.W_ACCESS_TOKEN;
 
 async function loginWithToken() {
   try {
@@ -21,6 +20,7 @@ async function loginWithToken() {
     }
   } catch (error) {
     console.error("Login error:", error.response?.data);
+
     throw error;
   }
 }

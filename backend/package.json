@@ -7,7 +7,7 @@
     "express": "^5.1.0",
     "mongoose": "^8.17.0"
   },
-  "name": "gps",
+  "name": "vehiclems",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {

@@ -1,13 +1,13 @@
 const express = require("express");
-const dotenv = require("dotenv");
+require("dotenv").config();
 const cors = require("cors");
 const fetchUnits = require("./modules/units");
 const fetchSensorValues = require("./modules/sensors");
 const connectDB = require("./config/connectDB");
-const path = require("path");
 const vehicleRoutes = require("./routes/vehicleRoute");
 
-dotenv.config({ path: path.join(__dirname, ".env") });
+// dotenv.config({ path: path.join(__dirname, ".env") });
+// dotenv.config();
 connectDB();
 
 const app = express();
