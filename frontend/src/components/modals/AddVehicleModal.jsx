@@ -1,18 +1,38 @@
 import React, { useState, useEffect } from "react";
 import API_URL from "../../config/apiconfig";
 import "./vehicleUpdateModal.css";
-import { vehicleTypeOptions } from "../../units/vehicleTypes";
+import NepaliDatePicker from "../calendar/nepaliDatePicker";
 
 const AddVehicleModal = ({ vehicle, onClose, onSave }) => {
   const [formData, setFormData] = useState(vehicle || {});
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [vehicleTypes, setVehicleTypes] = useState([]);
 
+  // Update form data when vehicle prop changes
   useEffect(() => {
     setFormData(vehicle || {});
     setMessage("");
     setError("");
   }, [vehicle]);
+
+  // Fetch vehicle types from API
+  useEffect(() => {
+    const fetchVehicleTypes = async () => {
+      try {
+        const res = await fetch(`${API_URL}/api/vehicle-types`);
+        if (res.ok) {
+          const data = await res.json();
+          setVehicleTypes(data);
+        } else {
+          console.error("Failed to fetch vehicle types");
+        }
+      } catch (err) {
+        console.error("Error fetching vehicle types:", err);
+      }
+    };
+    fetchVehicleTypes();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -44,9 +64,7 @@ const AddVehicleModal = ({ vehicle, onClose, onSave }) => {
         );
         setError("");
         onSave();
-        setTimeout(() => {
-          onClose();
-        }, 500); // Faster close
+        setTimeout(() => onClose(), 500);
       } else {
         const data = await res.json();
         setError(data.message || "Failed to save vehicle.");
@@ -68,6 +86,7 @@ const AddVehicleModal = ({ vehicle, onClose, onSave }) => {
         <h2>{formData._id ? "Edit Vehicle" : "Add Vehicle"}</h2>
         {message && <div className="success-message">{message}</div>}
         {error && <div className="error-message">{error}</div>}
+
         <form onSubmit={handleSubmit}>
           <label>
             Registration Number:
@@ -79,49 +98,54 @@ const AddVehicleModal = ({ vehicle, onClose, onSave }) => {
               required
             />
           </label>
+
           <label>
             Unit ID:
             <input
               name="unit_id"
               value={formData.unit_id || ""}
+              onChange={handleChange}
               readOnly
               required
             />
           </label>
+
           <label>
             Insurance Date:
-            <input
-              type="date"
-              name="insurance_last_paid_date"
+            <NepaliDatePicker
+              id="insurance-date"
               value={formData.insurance_details?.last_paid_date || ""}
-              onChange={(e) =>
+              placeholder="Select Insurance Date"
+              onChange={(val) =>
                 setFormData({
                   ...formData,
                   insurance_details: {
                     ...formData.insurance_details,
-                    last_paid_date: e.target.value,
+                    last_paid_date: val,
                   },
                 })
               }
             />
           </label>
+
           <label>
             Blue Book Date:
-            <input
-              type="date"
-              name="tax_last_paid_date"
+            <NepaliDatePicker
+              id="tax-date"
               value={formData.tax_details?.last_paid_date || ""}
-              onChange={(e) =>
+              placeholder="Select Blue Book Date"
+              onChange={(val) =>
                 setFormData({
                   ...formData,
                   tax_details: {
                     ...formData.tax_details,
-                    last_paid_date: e.target.value,
+                    last_paid_date: val,
                   },
                 })
               }
             />
           </label>
+
           <label>
             Status:
             <select
@@ -136,6 +160,7 @@ const AddVehicleModal = ({ vehicle, onClose, onSave }) => {
               <option value="Maintenance">Maintenance</option>
             </select>
           </label>
+
           <label>
             Working Site:
             <input
@@ -144,6 +169,7 @@ const AddVehicleModal = ({ vehicle, onClose, onSave }) => {
               onChange={handleChange}
             />
           </label>
+
           <label>
             Vehicle Type:
             <select
@@ -152,22 +178,26 @@ const AddVehicleModal = ({ vehicle, onClose, onSave }) => {
               onChange={handleChange}
             >
               <option value="">-- Select Vehicle Type --</option>
-              {vehicleTypeOptions.map(({ value, label }) => (
-                <option key={value} value={value}>
-                  {label}
+              {vehicleTypes.map((type) => (
+                <option key={type._id} value={type.name}>
+                  {type.name}
                 </option>
               ))}
             </select>
           </label>
+
           <label>
             Arrival Date:
-            <input
-              type="date"
-              name="arrival_date"
+            <NepaliDatePicker
+              id="arrival-date"
               value={formData.arrival_date || ""}
-              onChange={handleChange}
+              placeholder="Select Arrival Date"
+              onChange={(val) =>
+                setFormData({ ...formData, arrival_date: val })
+              }
             />
           </label>
+
           <div className="modal-buttons">
             <button type="submit">{formData._id ? "Update" : "Save"}</button>
             <button type="button" onClick={onClose}>

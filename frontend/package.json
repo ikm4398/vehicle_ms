@@ -12,10 +12,12 @@
   "dependencies": {
     "@fortawesome/free-solid-svg-icons": "^7.0.0",
     "@fortawesome/react-fontawesome": "^0.2.3",
+    "@sbmdkl/nepali-datepicker-reactjs": "^1.2.3",
     "axios": "^1.11.0",
     "dotenv": "^17.2.1",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
+    "react": "^18.2.0",
+    "react-data-table-component": "^7.7.0",
+    "react-dom": "^18.2.0",
     "react-router-dom": "^6.30.1"
   },
   "devDependencies": {

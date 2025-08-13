@@ -73,6 +73,18 @@
   background-color: #ffe0e0;
   color: #a92e2e;
 }
+.modal {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  position: relative;
+  animation: slideUp 0.2s ease-in-out;
+  z-index: 1000; /* Ensure modal is above other content */
+  overflow: visible; /* Allow datepicker to overflow if needed */
+}
+
 .modal-backdrop {
   position: fixed;
   top: 0;
@@ -83,18 +95,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 999;
-  animation: fadeIn 0.2s ease-in-out;
-}
-
-.modal {
-  background: white;
-  padding: 20px 30px;
-  border-radius: 8px;
-  max-width: 500px;
-  width: 100%;
-  position: relative;
-  animation: slideUp 0.2s ease-in-out;
+  z-index: 999; /* Below modal but above dashboard */
 }
 
 .modal-close {

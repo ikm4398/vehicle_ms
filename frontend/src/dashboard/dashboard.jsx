@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import Header from "../components/header";
+
 import DashboardCard from "./dashboardCard";
 import DashboardTable from "./dashboardTable";
 import "./dashboard.css";
@@ -131,7 +131,6 @@ const Dashboard = () => {
 
   return (
     <div>
-      <Header />
       <div className="dashboard-content">
         <div className="card-row">
           <DashboardCard

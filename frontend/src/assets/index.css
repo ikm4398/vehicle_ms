@@ -1,6 +1,54 @@
+/* Full-page fixed layout */
+html,
 body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: #f6f8fb;
+  height: 100%;
   margin: 0;
-  color: #232323;
+  font-family: Arial, sans-serif;
+}
+
+/* DataTable row hover effect */
+.rdt_TableRow:hover {
+  background-color: rgba(40, 78, 243, 0.05);
+}
+
+/* Optional: striped rows */
+.rdt_TableRow:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Header styles */
+.rdt_TableHead {
+  background-color: #f0f2fa !important;
+  color: #354174;
+  font-weight: 600;
+  font-size: 1.1rem;
+  min-height: 50px;
+}
+
+/* Cell styles */
+.rdt_TableCell {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #263359;
+  padding: 12px;
+}
+
+/* Scrollbar styles (optional, for modern look) */
+.rdt_TableBody {
+  scrollbar-width: thin;
+  scrollbar-color: #c0c0c0 #f0f0f0;
+}
+
+.rdt_TableBody::-webkit-scrollbar {
+  width: 8px;
+}
+
+.rdt_TableBody::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+.rdt_TableBody::-webkit-scrollbar-thumb {
+  background-color: #c0c0c0;
+  border-radius: 4px;
+  border: 2px solid #f0f0f0;
 }

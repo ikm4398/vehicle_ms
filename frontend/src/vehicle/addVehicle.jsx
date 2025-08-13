@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from "react";
-import Header from "../components/header";
 import API_URL from "../config/apiconfig";
 import "./addVehicle.css";
 
@@ -118,7 +117,6 @@ const AddVehicle = () => {
 
   return (
     <>
-      <Header />
       <div className="add-vehicle-form-wrapper">
         <h2>Add New Vehicle</h2>
 

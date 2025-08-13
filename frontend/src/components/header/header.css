@@ -1,0 +1,76 @@
+.header {
+  background: #fff;
+  padding: 24px 40px 10px 40px;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dashboard-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #263359;
+}
+
+nav {
+  display: flex;
+  gap: 32px;
+  position: relative;
+}
+
+nav a {
+  color: #263359;
+  text-decoration: none;
+  font-size: 1.05rem;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: border 0.2s;
+}
+
+nav a:hover {
+  border-bottom: 2px solid #234ef3;
+}
+
+nav .active {
+  border-bottom: 2px solid #234ef3;
+  font-weight: bold;
+}
+
+/* Dropdown styles */
+.dropdown {
+  position: relative;
+  cursor: pointer;
+}
+
+.settings-label {
+  font-size: 1.05rem;
+  color: #263359;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+  z-index: 100;
+}
+
+.dropdown-menu a {
+  padding: 10px 16px;
+  color: #263359;
+  font-size: 1rem;
+  border-bottom: none;
+}
+
+.dropdown-menu a:hover {
+  background: #f0f4ff;
+}

@@ -1,0 +1,102 @@
+.unit-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 80px); /* full viewport minus header */
+  margin: 0 100px;
+  width: calc(100% - 200px);
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+.unit-content h2 {
+  color: #263359;
+  margin-bottom: 12px;
+}
+
+/* Search box */
+.unit-search-box {
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1.5px solid #ccc;
+  font-size: 1rem;
+  width: 300px;
+  max-width: 100%;
+  transition: border-color 0.2s;
+}
+
+.unit-search-box:focus {
+  border-color: #234ef3;
+  outline: none;
+}
+
+/* DataTable actions buttons */
+.edit-button,
+.delete-button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-right: 5px;
+}
+
+.edit-button {
+  background-color: #234ef3;
+  color: #fff;
+}
+
+.edit-button:hover {
+  background-color: #1825ad;
+}
+
+.delete-button {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.delete-button:hover {
+  background-color: #c32f27;
+}
+
+/* Message text */
+.message {
+  color: green;
+  font-weight: 500;
+}
+
+/* Vehicle type form */
+.vehicle-type-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.vehicle-type-form input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1.5px solid #ccc;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.vehicle-type-form input:focus {
+  border-color: #234ef3;
+  outline: none;
+}
+
+.vehicle-type-form button {
+  padding: 8px 16px;
+  background-color: #234ef3;
+  color: #fff;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.vehicle-type-form button:hover {
+  background-color: #1825ad;
+}
+
+
