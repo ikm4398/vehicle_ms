@@ -1,9 +1,9 @@
 {
-  "name": "vehiclems",
+  "name": "vehicleMS",
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "concurrently --names \"BACKEND,FRONTEND\" -c \"cyan,green\" \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\""
+    "start": "concurrently --names \"VEHICLE_MS_BACKEND,VEHICLE_MS_FRONTEND\" -c \"cyan,green\" \"npm run dev --prefix backend\" \"npm run dev --prefix frontend\""
   },
   "devDependencies": {
     "concurrently": "^8.0.0"

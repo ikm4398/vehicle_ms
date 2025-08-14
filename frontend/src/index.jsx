@@ -2,7 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import "./assets/index.css";
-import App from "./routes";
+import App from "./routes/routes";
 import Header from "./components/header/header";
 
 createRoot(document.getElementById("root")).render(

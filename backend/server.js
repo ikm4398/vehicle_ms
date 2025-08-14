@@ -6,6 +6,7 @@ const fetchSensorValues = require("./modules/sensors");
 const connectDB = require("./config/connectDB");
 const vehicleRoutes = require("./routes/vehicleRoute");
 const vehicleTypeRoutes = require("./routes/vehicleTypeRoutes");
+const driverRoutes = require("./routes/driverRoutes");
 
 // dotenv.config({ path: path.join(__dirname, ".env") });
 // dotenv.config();
@@ -15,10 +16,12 @@ const app = express();
 
 app.use(express.json()); // Parse incoming JSON requests
 app.use(cors()); // Enable CORS
+app.use("/uploads", express.static("uploads"));
 
 // Routes
 app.use("/api/vehicles", vehicleRoutes);
 app.use("/api/vehicle-types", vehicleTypeRoutes);
+app.use("/api/drivers", driverRoutes);
 
 app.get("/units", async (req, res) => {
   try {

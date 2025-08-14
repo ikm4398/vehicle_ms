@@ -38,7 +38,7 @@ const NepaliDatePicker = ({ value, onChange, id, placeholder }) => {
       id={id}
       placeholder={placeholder}
       defaultValue={value}
-      readOnly // Usually the Nepali datepicker inputs are readonly so user uses the picker
+      //readOnly // Usually the Nepali datepicker inputs are readonly so user uses the picker
     />
   );
 };

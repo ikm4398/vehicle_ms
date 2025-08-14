@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import API_URL from "../config/apiconfig";
+import API_URL from "../config/apiConfig";
 import "./addVehicle.css";
 
 const AddVehicle = () => {

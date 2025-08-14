@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import API_URL from "../../config/apiconfig";
-import "./vehicleUpdateModal.css";
-import NepaliDatePicker from "../calendar/nepaliDatePicker";
+import API_URL from "../../../config/apiConfig";
+import "./vehicleModal.css";
+import ConvertDate from "../../calendar/ConvertDate";
+import VEHICLE_STATUS from "./vehicleStatus";
 
 const AddVehicleModal = ({ vehicle, onClose, onSave }) => {
   const [formData, setFormData] = useState(vehicle || {});
@@ -88,17 +89,7 @@ const AddVehicleModal = ({ vehicle, onClose, onSave }) => {
         {error && <div className="error-message">{error}</div>}
 
         <form onSubmit={handleSubmit}>
-          <label>
-            Registration Number:
-            <input
-              name="vehicle_registration_number"
-              value={formData.vehicle_registration_number || ""}
-              onChange={handleChange}
-              readOnly
-              required
-            />
-          </label>
-
+          {" "}
           <label>
             Unit ID:
             <input
@@ -109,67 +100,16 @@ const AddVehicleModal = ({ vehicle, onClose, onSave }) => {
               required
             />
           </label>
-
           <label>
-            Insurance Date:
-            <NepaliDatePicker
-              id="insurance-date"
-              value={formData.insurance_details?.last_paid_date || ""}
-              placeholder="Select Insurance Date"
-              onChange={(val) =>
-                setFormData({
-                  ...formData,
-                  insurance_details: {
-                    ...formData.insurance_details,
-                    last_paid_date: val,
-                  },
-                })
-              }
-            />
-          </label>
-
-          <label>
-            Blue Book Date:
-            <NepaliDatePicker
-              id="tax-date"
-              value={formData.tax_details?.last_paid_date || ""}
-              placeholder="Select Blue Book Date"
-              onChange={(val) =>
-                setFormData({
-                  ...formData,
-                  tax_details: {
-                    ...formData.tax_details,
-                    last_paid_date: val,
-                  },
-                })
-              }
-            />
-          </label>
-
-          <label>
-            Status:
-            <select
-              name="status"
-              value={formData.status || ""}
-              onChange={handleChange}
-            >
-              <option value="">-- Select Status --</option>
-              <option value="Running">Running</option>
-              <option value="Bekat">Bekat</option>
-              <option value="Breakdown">Breakdown</option>
-              <option value="Maintenance">Maintenance</option>
-            </select>
-          </label>
-
-          <label>
-            Working Site:
+            Registration Number:
             <input
-              name="working_site"
-              value={formData.working_site || ""}
+              name="vehicle_registration_number"
+              value={formData.vehicle_registration_number || ""}
               onChange={handleChange}
+              readOnly
+              required
             />
           </label>
-
           <label>
             Vehicle Type:
             <select
@@ -185,19 +125,74 @@ const AddVehicleModal = ({ vehicle, onClose, onSave }) => {
               ))}
             </select>
           </label>
-
           <label>
-            Arrival Date:
-            <NepaliDatePicker
-              id="arrival-date"
-              value={formData.arrival_date || ""}
-              placeholder="Select Arrival Date"
-              onChange={(val) =>
-                setFormData({ ...formData, arrival_date: val })
+            Insurance Date:
+            <ConvertDate
+              id="insurance-date"
+              value={formData.insurance_details?.last_paid_date || ""}
+              placeholder="Select Insurance Date"
+              onChange={(adDate) =>
+                setFormData({
+                  ...formData,
+                  insurance_details: {
+                    ...formData.insurance_details,
+                    last_paid_date: adDate, // only save AD date
+                  },
+                })
               }
             />
           </label>
-
+          <label>
+            Blue Book Date:
+            <ConvertDate
+              id="tax-date"
+              value={formData.tax_details?.last_paid_date || ""}
+              placeholder="Select Blue Book Date"
+              onChange={(adDate) =>
+                setFormData({
+                  ...formData,
+                  tax_details: {
+                    ...formData.tax_details,
+                    last_paid_date: adDate, // save AD
+                  },
+                })
+              }
+            />
+          </label>
+          <label>
+            Status:
+            <select
+              name="status"
+              value={formData.status || ""}
+              onChange={handleChange}
+            >
+              <option value="">-- Select Status --</option>
+              {VEHICLE_STATUS.map((status) => (
+                <option key={status} value={status}>
+                  {status}
+                </option>
+              ))}
+            </select>
+          </label>
+          <label>
+            Working Site:
+            <input
+              name="working_site"
+              value={formData.working_site || ""}
+              onChange={handleChange}
+            />
+          </label>
+          <label>
+            Arrival Date:
+            <ConvertDate
+              id="arrival-date"
+              value={formData.arrival_date || ""}
+              placeholder="Select Arrival Date"
+              onChange={(adDate) =>
+                setFormData({ ...formData, arrival_date: adDate })
+              }
+            />
+          </label>
           <div className="modal-buttons">
             <button type="submit">{formData._id ? "Update" : "Save"}</button>
             <button type="button" onClick={onClose}>

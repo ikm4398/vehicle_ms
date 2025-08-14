@@ -29,7 +29,7 @@ const Header = () => {
           Drivers
         </NavLink>
         <NavLink
-          to="/reports"
+          to="/cal"
           className={({ isActive }) => (isActive ? "active" : "")}
         >
           Reports
@@ -51,7 +51,7 @@ const Header = () => {
                 General Settings
               </NavLink>
               <NavLink
-                to="/setting/add-vehicle-type"
+                to="/settings/add-vehicle-types"
                 className={({ isActive }) => (isActive ? "active" : "")}
               >
                 Add Vehicle Type
